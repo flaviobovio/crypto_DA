@@ -1,30 +1,31 @@
-
+## **PROYECTO: DATA ANALYTICS CRIPTOMONEDAS**
 ### **Fuentes de Datos**
 Origen [API CoinGecko] https://www.coingecko.com
 
 ### **Archivos y carpetas**
 - \data\* Contiene los archivos de datos extraídos
 - \source\* Contiene las imágenes del presente archivo
-- \ETL.ipnb Notebook con la extracción y transformación de los datos
+- \ETL.ipynb Notebook con la extracción y transformación de los datos
 - \EDA.ipynb Notebook con análisis exploratorio de los datos
 - \README.md Este archivo
 
 ### **Lenguaje y librerías utilizadas** 
-Para la extracción de datos (ETL) y la exploración (EDA) se utilizó Python 3 y las librerías MathPlotLib y Seaborn para graficar
+Para la extracción de datos (ETL) y la exploración (EDA) se utilizó Python 3 y las librerías MatPlotLib y Seaborn para graficar
 
 
 ## **INFORME** ##
 
 ### **Contexto del proyecto**
-En mi rol de Analista de Datos de la empresa X, que presta servicios financieros, localizada en Argentina, se me solicita un análisis e informe sobre criptomonedas para evaluar la posibilidad de invertir en estos activos.
+En los últimos años, el mercado de las criptomonedas ha experimentado un crecimiento exponencial y una creciente adopción a nivel mundial. La aparición del Bitcoin en 2009 marcó el inicio de una revolución financiera que ha llevado a la creación de miles de criptomonedas diferentes con diversas funcionalidades y tecnologías subyacentes.
+En mi rol de Analista de Datos de la empresa **X**, que presta servicios financieros, localizada en Argentina, se me solicita un análisis e informe sobre criptomonedas para evaluar la posibilidad de invertir en estos activos.
 
 
 ### **Monedas**
 - Criterio de selección
     - Mayor volumen a la fecha
     - Mayor Capitalización de Mercado a la fecha
-    - Se descartaron StableCoins (monedas atadas al valor de una moneda fiat u otro activo), ya que las más utilizadas no representan un atractivo a la hora de invertir
-    - Se descartaron otras monedas arbitrariamente por no considerarlas de interés para los objetivos propuestos o similitidud con otras
+    - Se descartaron Stable Coins (monedas atadas al valor de una moneda fiat u otro activo), ya que las más utilizadas no representan un atractivo a la hora de invertir
+    - Se descartaron otras monedas arbitrariamente por no considerarlas de interés para los objetivos propuestos o similitud con otras
     - Se seleccionaron 10 monedas para realizar el análisis
     -*Se puede ver la técnica utilizada en el siguiente notebook [ETL.ipynb](ETL.ipynb)*
 
@@ -39,7 +40,7 @@ En mi rol de Analista de Datos de la empresa X, que presta servicios financieros
   6. **Dogecoin (DOGE)** ![Alt text](src/doge.png) es una criptomoneda originada como una broma en 2013, basada en un meme de un perro Shiba Inu. Aunque comenzó como una moneda humorística, ha ganado cierta popularidad y aceptación como una forma de microtransacciones en línea y donaciones caritativas
   7. **Solana (SOL)** ![Alt text](src/sol.png) es una plataforma blockchain de alto rendimiento que busca abordar problemas de escalabilidad, procesando un gran número de transacciones a velocidades rápidas y costos bajos, lo que la hace adecuada para aplicaciones descentralizadas y finanzas descentralizadas (DeFi)
   8. **Tron (TRX)** ![Alt text](src/trx.png) Tron es una plataforma blockchain que tiene como objetivo descentralizar la industria del entretenimiento y contenido digital, permitiendo a los usuarios crear, distribuir y consumir contenido directamente sin intermediarios
-  9. **PolkaDot (DOT)** ![Alt text](src/dot.png) Polkadot es una plataforma de cadenas de bloques interoperables que permite a diferentes redes blockchain comunicarse y compartir información de manera eficiente, fomentando la innovación y colaboración entre proyectos descentralizados
+  9. **Polka Dot (DOT)** ![Alt text](src/dot.png) Polkadot es una plataforma de cadenas de bloques interoperables que permite a diferentes redes blockchain comunicarse y compartir información de manera eficiente, fomentando la innovación y colaboración entre proyectos descentralizados
   10. **Ripple (XRP)** ![Alt text](src/xrp.png) es una plataforma de pagos y soluciones financieras basada en blockchain, diseñada para facilitar transferencias de dinero globales de manera rápida y económica. XRP es su criptomoneda asociada, utilizada para facilitar transacciones en la red y como puente de liquidez
 
 
@@ -55,7 +56,7 @@ En mi rol de Analista de Datos de la empresa X, que presta servicios financieros
 * Dado el precio actual de las criptomonedas en general y sus valores máximos pueden resultar una buena inversión en el mediano / largo plazo, no tanto así en el corto plazo ya que se encuentran en un período de estancamiento de precios y tienen altibajos dentro de un rango de precios medios.
 * De acuerdo a lo observado, es vital escoger bien tanto el momento de compra como el de venta de la moneda elegida, para poder capitalizar ganancias.
 * Si bien casi todas las criptomonedas pueden ser convertidas a moneda corriente de forma casi inmediata, tener que venderlas en un mal momento puede generar pérdidas considerables.
-* Al no haber invertido nunca en este tipo de activos, se recomienda seleccionar alguna de las monedas con mayor capitalización ya que brindan menores riesgos. Otra opción es diversificar la inversión en mas de una moneda.
+* Al no haber invertido nunca en este tipo de activos, se recomienda seleccionar alguna de las monedas con mayor capitalización ya que brindan menores riesgos. Otra opción es diversificar la inversión en más de una moneda.
 * Teniendo en cuenta la situación económica-financiera de Argentina, el hecho de que las criptomonedas son convertibles a valor dólar, hace más atractiva la inversión ya que nos permite cubrirnos de la creciente inflación actual.
 
 

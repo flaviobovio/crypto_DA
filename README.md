@@ -68,5 +68,5 @@ En mi rol de Analista de Datos de la empresa **X**, que presta servicios financi
     * Plataformas de intercambio: Menos seguras, permiten invertir las monedas y obtener ganancias extra, pero hay que tener en cuenta que estas plataformas se convierten en las tenedoras de los activos, lo que implica un riesgo extra
 
 
-### **Link a Stramlit Dashboard**
-* :point_right: [Dashboard](https://cryptoda-cmvbbxpskhjvezbu8uerfo.streamlit.app/)
+### **Link a Streamlit Dashboard**
+:point_right: [Dashboard](https://cryptoda-cmvbbxpskhjvezbu8uerfo.streamlit.app/)

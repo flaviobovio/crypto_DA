@@ -3,8 +3,9 @@
 Origen [API CoinGecko] https://www.coingecko.com
 
 ### **Archivos y carpetas**
-- \data\* Contiene los archivos de datos extraídos
-- \source\* Contiene las imágenes del presente archivo
+- \data\\* Contiene los archivos de datos extraídos
+- \src\\* Contiene las imágenes del presente archivo
+- \streamlit\\* Código y archivos dashboard 
 - \ETL.ipynb Notebook con la extracción y transformación de los datos
 - \EDA.ipynb Notebook con análisis exploratorio de los datos
 - \README.md Este archivo
@@ -65,3 +66,7 @@ En mi rol de Analista de Datos de la empresa **X**, que presta servicios financi
     * Billeteras frías: Más seguras, pero menos versátiles (sólo sirven para una moneda y existen sólo para algunas criptomonedas)
     * Billeteras calientes: Menos seguras, están conectadas a internet todo el tiempo
     * Plataformas de intercambio: Menos seguras, permiten invertir las monedas y obtener ganancias extra, pero hay que tener en cuenta que estas plataformas se convierten en las tenedoras de los activos, lo que implica un riesgo extra
+
+
+### **Link a Stramlit Dashboard**
+* :point_right: [Dashboard](https://cryptoda-cmvbbxpskhjvezbu8uerfo.streamlit.app/)

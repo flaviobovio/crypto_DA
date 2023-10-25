@@ -3,8 +3,9 @@ from typing import List, Tuple
 import pandas as pd
 import plotly.express as px
 import streamlit as st
+from sklearn.preprocessing import MinMaxScaler
 
-graficos = {'Precio':'prices', 'Capitalización de Mercado':'market_caps', 'Volúmen':'total_volumes'}
+graficos = {'Precio':'prices_scaled', 'Capitalización de Mercado':'market_caps_scaled', 'Volúmen':'total_volumes_scaled'}
 
 
 def set_page_config():
@@ -18,9 +19,27 @@ def set_page_config():
 
 @st.cache_data
 def load_data() -> pd.DataFrame:
+    # Leer Data
     data = pd.read_csv('data/cotizaciones.csv')
     data['id_coin'] = data['id_coin'].str.title()
     data['date'] = pd.to_datetime(data['date'])
+
+    # Escalar Data agrupando x id_coin
+    df = data.copy()
+    scaler = MinMaxScaler()
+
+    for group_name, group_data in df.groupby('id_coin'):
+        float_columns = group_data.select_dtypes(include=['float64'])
+        group_data[float_columns.columns] = scaler.fit_transform(float_columns)
+        df.loc[group_data.index] = group_data
+
+    df.rename(columns={'prices': 'prices_scaled', 'market_caps':'market_caps_scaled', 'total_volumes':'total_volumes_scaled' }, inplace=True)
+    df.drop(columns=['id_coin', 'date'], inplace=True)
+    data = pd.concat([data, df], axis=1)
+
+
+
+
     return data
 
 
@@ -71,16 +90,15 @@ def display_kpi_metrics(data: pd.DataFrame) -> List[float]:
 
 def display_sidebar(data: pd.DataFrame):
     st.sidebar.header('Filtros')
-    st.sidebar.divider() 
     moneda = data['id_coin'].unique()
     moneda_seleccion = st.sidebar.selectbox('**Moneda**', moneda)
-    st.sidebar.divider() 
     desde = pd.Timestamp(st.sidebar.date_input("**Fecha Desde**", data['date'].min().date()))
     hasta = pd.Timestamp(st.sidebar.date_input("**Fecha Hasta**", data['date'].max().date()))
     st.sidebar.divider() 
+    st.sidebar.header('Gráficos')    
     grafico = st.sidebar.selectbox('**Valor a Graficar:**', graficos)
-
-    return moneda_seleccion, desde, hasta, grafico
+    monedas_graficos = st.sidebar.multiselect('**Monedas**', moneda)
+    return moneda_seleccion, desde, hasta, grafico, monedas_graficos
 
 
 
@@ -92,9 +110,9 @@ def display_charts(data: pd.DataFrame, grafico: str):
     with graf1:
         colores = ['green', 'blue', 'orange']
         valor_y = graficos[grafico]
-        fig = px.line(data, x='date', y=valor_y, width=900, height=450)
-        color = colores[list(graficos.keys()).index(grafico)]
-        fig.update_traces(line=dict(color=color))    
+        fig = px.line(data, x='date', y=valor_y, color='id_coin', width=900, height=450)
+        #olor = colores[list(graficos.keys()).index(grafico)]
+        #fig.update_traces(line=dict(color=color))    
         fig.update_layout(title_text=f'{grafico} en el tiempo',
                     title_font=dict(size=18))
         fig.update_xaxes(title_text='')    
@@ -164,14 +182,16 @@ def main():
     st.header(":chart_with_upwards_trend: Análisis Criptomonedas")
 
 
-    moneda_seleccion, desde, hasta, valor_y = display_sidebar(data)
+    moneda_seleccion, desde, hasta, valor_y, monedas_graficos = display_sidebar(data)
  
     df_filtrado = data.copy()
+    df_filtrado_grf = data.copy()
     df_filtrado = df_filtrado[(df_filtrado['id_coin']==moneda_seleccion)\
                               & (df_filtrado['date']>=desde)\
                               & (df_filtrado['date']<=hasta)]
-
-
+    df_filtrado_grf = df_filtrado_grf[(df_filtrado_grf['id_coin'].isin(monedas_graficos))\
+                              & (df_filtrado_grf['date']>=desde)\
+                              & (df_filtrado_grf['date']<=hasta)]
 
 
     display_selections(df_filtrado)
@@ -179,7 +199,7 @@ def main():
     st.divider() 
     display_kpi_metrics(df_filtrado)
     st.divider() 
-    display_charts(df_filtrado, valor_y)
+    display_charts(df_filtrado_grf, valor_y)
 
 
 if __name__ == '__main__':
